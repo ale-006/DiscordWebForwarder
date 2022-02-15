@@ -1,0 +1,28 @@
+<!-- CREATED BY ALESSANDRO BAIO (February 2022) -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discord Web Projector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+</head>
+
+<body style="margin: 0; padding-bottom: 3rem; font-family: 'Courier New', Courier, monospace;">
+<h1 style="margin: 1em; text-decoration: underline;">Discord Web Projector</h1>
+    <ul id="messages" style="list-style-type: none; margin: 0.5em;"></ul>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    const socket = io()
+    socket.on("message", function(msg) {
+        var item = document.createElement("li")
+        item.textContent = msg[0] + ": " + msg[1];
+        var line = document.createElement("hr")
+        messages.appendChild(item)
+        messages.appendChild(line)
+        window.scrollTo(0, document.body.scrollHeight)
+    });
+    </script>
+</body>
+</html>
